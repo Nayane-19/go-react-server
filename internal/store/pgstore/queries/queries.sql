@@ -1,16 +1,16 @@
 -- name: GetRoom :one
 SELECT
     "id", "theme"
-FROM rooms
+FROM rooms_table
 WHERE id = $1;
 
 -- name: GetRooms :many
 SELECT
     "id", "theme"
-FROM rooms;
+FROM rooms_table;
 
 -- name: InsertRoom :one
-INSERT INTO rooms
+INSERT INTO rooms_table
     ( "theme" ) VALUES
     ( $1 )
 RETURNING "id";

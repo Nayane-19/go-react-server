@@ -192,7 +192,7 @@ func (h apiHandler) handleGetRooms(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if rooms == nil {
-		rooms = []pgstore.Room{}
+		rooms = []pgstore.RoomsTable{}
 	}
 
 	sendJSON(w, rooms)

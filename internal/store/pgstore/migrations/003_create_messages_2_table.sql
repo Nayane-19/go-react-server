@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS messages (
     "reaction_count"    BIGINT                          NOT NULL    DEFAULT 0,
     "answered"          BOOLEAN                         NOT NULL    DEFAULT false,
 
-    FOREIGN KEY (room_id) REFERENCES rooms(id)
+    FOREIGN KEY (room_id) REFERENCES rooms_table(id)
 );
 
 ---- create above / drop below ----

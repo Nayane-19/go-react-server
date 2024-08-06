@@ -2,7 +2,7 @@
 
 ## Description
 
-This repository contains a Go application that uses Docker Compose for container management, Tern for dependency analysis, and SQLC for generating SQL code from queries. The goal is to provide an efficient development environment and a solid foundation for Go application development.
+This repository contains a Go application that uses Docker Compose for container management, Tern for migrations to PostgreSQL, SQLC for generating SQL code from queries, and Gorilla/websocket for real-time communication through WebSocket. The goal is to provide an efficient development environment and a solid foundation for Go application development.
 
 ## Prerequisites
 
@@ -10,8 +10,9 @@ Before you start, make sure you have the following software installed:
 
 - [Docker](https://docs.docker.com/get-docker/)
 - [Docker Compose](https://docs.docker.com/compose/install/)
-- [Tern](https://github.com/tern-tools/tern)
+- [Tern](https://github.com/jackc/tern)
 - [SQLC](https://sqlc.dev/docs/intro/)
+- [Gorilla WebSocket](https://github.com/gorilla/websocket)
 
 ## Project Structure
 
@@ -68,15 +69,15 @@ Before you start, make sure you have the following software installed:
    Build and run the application:
 
    ```bash
-   go run cmd/main.go
+   go run cmd/wsrs/main.go 
    ```
 
 ## Useful Scripts
 
-- **Up Docker Compose**: `docker-compose up -d`
+- **Up Docker Compose**: `docker-compose up -d || docker-compose start`
 - **Down Docker Compose**: `docker-compose down`
 - **Generate SQLC Code**: `sqlc generate`
-- **Run Tests**: `go test ./...`
+- **Create Migrations and queries**: `go generate ./...`
 
 ## Contributing
 
