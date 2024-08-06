@@ -21,6 +21,11 @@ type Room struct {
 	Theme string    `db:"theme" json:"theme"`
 }
 
+type RoomsTable struct {
+	ID    uuid.UUID `db:"id" json:"id"`
+	Theme string    `db:"theme" json:"theme"`
+}
+
 type Teste struct {
 	ID    uuid.UUID `db:"id" json:"id"`
 	Theme string    `db:"theme" json:"theme"`

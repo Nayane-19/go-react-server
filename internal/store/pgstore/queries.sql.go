@@ -35,13 +35,13 @@ func (q *Queries) GetMessage(ctx context.Context, id uuid.UUID) (Message, error)
 const getRoom = `-- name: GetRoom :one
 SELECT
     "id", "theme"
-FROM rooms
+FROM rooms_table
 WHERE id = $1
 `
 
-func (q *Queries) GetRoom(ctx context.Context, id uuid.UUID) (Room, error) {
+func (q *Queries) GetRoom(ctx context.Context, id uuid.UUID) (RoomsTable, error) {
 	row := q.db.QueryRow(ctx, getRoom, id)
-	var i Room
+	var i RoomsTable
 	err := row.Scan(&i.ID, &i.Theme)
 	return i, err
 }
@@ -83,18 +83,18 @@ func (q *Queries) GetRoomMessages(ctx context.Context, roomID uuid.UUID) ([]Mess
 const getRooms = `-- name: GetRooms :many
 SELECT
     "id", "theme"
-FROM rooms
+FROM rooms_table
 `
 
-func (q *Queries) GetRooms(ctx context.Context) ([]Room, error) {
+func (q *Queries) GetRooms(ctx context.Context) ([]RoomsTable, error) {
 	rows, err := q.db.Query(ctx, getRooms)
 	if err != nil {
 		return nil, err
 	}
 	defer rows.Close()
-	var items []Room
+	var items []RoomsTable
 	for rows.Next() {
-		var i Room
+		var i RoomsTable
 		if err := rows.Scan(&i.ID, &i.Theme); err != nil {
 			return nil, err
 		}
@@ -126,7 +126,7 @@ func (q *Queries) InsertMessage(ctx context.Context, arg InsertMessageParams) (u
 }
 
 const insertRoom = `-- name: InsertRoom :one
-INSERT INTO rooms
+INSERT INTO rooms_table
     ( "theme" ) VALUES
     ( $1 )
 RETURNING "id"
