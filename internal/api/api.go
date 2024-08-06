@@ -8,8 +8,7 @@ import (
 	"net/http"
 	"sync"
 
-	"github.com/rocketseat-education/semana-tech-go-react-server/internal/store/pgstore"
-
+	"github.com/Nayane-19/go-react-server/internal/store/pgstore"
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
 	"github.com/go-chi/cors"

@@ -10,7 +10,6 @@ import (
 
 	"github.com/Nayane-19/go-react-server/internal/api"
 	"github.com/Nayane-19/go-react-server/internal/store/pgstore"
-
 	"github.com/jackc/pgx/v5/pgxpool"
 	"github.com/joho/godotenv"
 )
